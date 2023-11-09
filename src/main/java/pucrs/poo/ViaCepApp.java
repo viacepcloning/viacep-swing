@@ -59,19 +59,20 @@ public class ViaCepApp {
 
     private static void createAndShowGUI() {
 
-        String[] labels = {"CEP: ", "Logradouro: ", "Complemento: ", "Bairro: ", "Localidade: ", "UF: "};
-        int numPairs = labels.length;
-
-        Cep cep = ViaCepClient.findCep("01001000");
 
         JPanel p = new JPanel(new SpringLayout());
+        JTextField cepField = addTextField(p, "CEP");
+        JTextField logradouroField = addTextField(p, "Logradouro");
+        JTextField complementoField = addTextField(p, "Complemento");
+        JTextField bairroField = addTextField(p, "Bairro");
+        JTextField localidadeField = addTextField(p, "Localidade");
+        JTextField ufField = addTextField(p, "UF");
 
-        for (String label : labels) {
-            addTextField(p, label);
-        }
+        cepField.setEditable(true);
+        cepField.setEnabled(true);
 
         SpringUtilities.makeCompactGrid(p,
-                numPairs, 2, //rows, cols
+                6, 2, //rows, cols
                 6, 6,        //initX, initY
                 6, 6);       //xPad, yPad
 
@@ -83,6 +84,18 @@ public class ViaCepApp {
 
         frame.pack();
         frame.setVisible(true);
+
+        javax.swing.SwingUtilities.invokeLater(() ->
+        {
+            Cep cep = ViaCepClient.findCep("01001000");
+            cepField.setText(cep.getCep());
+            logradouroField.setText(cep.getLogradouro());
+            complementoField.setText(cep.getComplemento());
+            bairroField.setText(cep.getBairro());
+            localidadeField.setText(cep.getLocalidade());
+            ufField.setText(cep.getUf());
+        });
+
     }
 
     public static void main(String[] args) {
