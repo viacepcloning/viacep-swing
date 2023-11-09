@@ -52,7 +52,6 @@ public class ViaCepApp {
         JTextField textField = new JTextField(25);
         l.setLabelFor(textField);
         textField.setEditable(false);
-        textField.setEnabled(false);
         p.add(textField);
         return textField;
     }
@@ -69,7 +68,6 @@ public class ViaCepApp {
         JTextField ufField = addTextField(p, "UF");
 
         cepField.setEditable(true);
-        cepField.setEnabled(true);
 
         SpringUtilities.makeCompactGrid(p,
                 6, 2, //rows, cols
@@ -85,15 +83,24 @@ public class ViaCepApp {
         frame.pack();
         frame.setVisible(true);
 
-        javax.swing.SwingUtilities.invokeLater(() ->
+        cepField.addActionListener(e ->
         {
-            Cep cep = ViaCepClient.findCep("01001000");
-            cepField.setText(cep.getCep());
-            logradouroField.setText(cep.getLogradouro());
-            complementoField.setText(cep.getComplemento());
-            bairroField.setText(cep.getBairro());
-            localidadeField.setText(cep.getLocalidade());
-            ufField.setText(cep.getUf());
+            cepField.setEditable(false);
+            javax.swing.SwingUtilities.invokeLater(() ->
+            {
+                try {
+                    Cep cep = ViaCepClient.findCep(cepField.getText());
+                    cepField.setText(cep.getCep());
+                    logradouroField.setText(cep.getLogradouro());
+                    complementoField.setText(cep.getComplemento());
+                    bairroField.setText(cep.getBairro());
+                    localidadeField.setText(cep.getLocalidade());
+                    ufField.setText(cep.getUf());
+                } finally {
+                    cepField.setEditable(true);
+                }
+            });
+
         });
 
     }
