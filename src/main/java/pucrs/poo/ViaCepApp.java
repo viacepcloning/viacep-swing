@@ -38,18 +38,20 @@ package pucrs.poo;
 
 import com.gtbr.ViaCepClient;
 import com.gtbr.domain.Cep;
+import com.gtbr.utils.CEPUtils;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author marco.mangan@pucrs.br
  */
 public class ViaCepApp {
 
-    private static JTextField addTextField(JPanel p, String label) {
-        JLabel l = new JLabel(label, JLabel.TRAILING);
+    private static JTextField addTextField(final JPanel p, final String label) {
+        final JLabel l = new JLabel(label, JLabel.TRAILING);
         p.add(l);
-        JTextField textField = new JTextField(25);
+        final JTextField textField = new JTextField(25);
         l.setLabelFor(textField);
         textField.setEditable(false);
         p.add(textField);
@@ -59,13 +61,14 @@ public class ViaCepApp {
     private static void createAndShowGUI() {
 
 
-        JPanel p = new JPanel(new SpringLayout());
-        JTextField cepField = addTextField(p, "CEP");
-        JTextField logradouroField = addTextField(p, "Logradouro");
-        JTextField complementoField = addTextField(p, "Complemento");
-        JTextField bairroField = addTextField(p, "Bairro");
-        JTextField localidadeField = addTextField(p, "Localidade");
-        JTextField ufField = addTextField(p, "UF");
+        final JPanel p = new JPanel(new SpringLayout());
+
+        final JTextField cepField = addTextField(p, "CEP");
+        final JTextField logradouroField = addTextField(p, "Logradouro");
+        final JTextField complementoField = addTextField(p, "Complemento");
+        final JTextField bairroField = addTextField(p, "Bairro");
+        final JTextField localidadeField = addTextField(p, "Localidade");
+        final JTextField ufField = addTextField(p, "UF");
 
         cepField.setEditable(true);
 
@@ -74,7 +77,7 @@ public class ViaCepApp {
                 6, 6,        //initX, initY
                 6, 6);       //xPad, yPad
 
-        JFrame frame = new JFrame("Via CEP");
+        final JFrame frame = new JFrame("Via CEP");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         p.setOpaque(true);  //content panes must be opaque
@@ -89,13 +92,22 @@ public class ViaCepApp {
             javax.swing.SwingUtilities.invokeLater(() ->
             {
                 try {
-                    Cep cep = ViaCepClient.findCep(cepField.getText());
+                    String endereco = CEPUtils.removeMascaraCep(cepField.getText());
+                    Cep cep = ViaCepClient.findCep(endereco);
+                    cepField.setForeground(Color.BLACK);
                     cepField.setText(cep.getCep());
                     logradouroField.setText(cep.getLogradouro());
                     complementoField.setText(cep.getComplemento());
                     bairroField.setText(cep.getBairro());
                     localidadeField.setText(cep.getLocalidade());
                     ufField.setText(cep.getUf());
+                } catch (Exception ex) {
+                    cepField.setForeground(Color.RED);
+                    logradouroField.setText("");
+                    complementoField.setText("");
+                    bairroField.setText("");
+                    localidadeField.setText("");
+                    ufField.setText("");
                 } finally {
                     cepField.setEditable(true);
                 }
