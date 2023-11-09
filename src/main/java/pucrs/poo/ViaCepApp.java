@@ -41,52 +41,51 @@ import com.gtbr.domain.Cep;
 
 import javax.swing.*;
 
+/**
+ * @author marco.mangan@pucrs.br
+ */
 public class ViaCepApp {
-    /**
-     * Create the GUI and show it.  For thread safety,
-     * this method should be invoked from the
-     * event-dispatching thread.
-     */
+
+    private static JTextField addTextField(JPanel p, String label) {
+        JLabel l = new JLabel(label, JLabel.TRAILING);
+        p.add(l);
+        JTextField textField = new JTextField(25);
+        l.setLabelFor(textField);
+        textField.setEditable(false);
+        textField.setEnabled(false);
+        p.add(textField);
+        return textField;
+    }
+
     private static void createAndShowGUI() {
+
         String[] labels = {"CEP: ", "Logradouro: ", "Complemento: ", "Bairro: ", "Localidade: ", "UF: "};
         int numPairs = labels.length;
 
         Cep cep = ViaCepClient.findCep("01001000");
 
-        //Create and populate the panel.
         JPanel p = new JPanel(new SpringLayout());
+
         for (String label : labels) {
-            JLabel l = new JLabel(label, JLabel.TRAILING);
-            p.add(l);
-            JTextField textField = new JTextField(25);
-            l.setLabelFor(textField);
-            textField.setEditable(false);
-            textField.setEnabled(false);
-            p.add(textField);
+            addTextField(p, label);
         }
 
-        //Lay out the panel.
         SpringUtilities.makeCompactGrid(p,
                 numPairs, 2, //rows, cols
                 6, 6,        //initX, initY
                 6, 6);       //xPad, yPad
 
-        //Create and set up the window.
         JFrame frame = new JFrame("Via CEP");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //Set up the content pane.
         p.setOpaque(true);  //content panes must be opaque
         frame.setContentPane(p);
 
-        //Display the window.
         frame.pack();
         frame.setVisible(true);
     }
 
     public static void main(String[] args) {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(ViaCepApp::createAndShowGUI);
     }
 }
