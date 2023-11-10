@@ -39,6 +39,9 @@ package pucrs.poo;
 import com.gtbr.ViaCepClient;
 import com.gtbr.domain.Cep;
 import com.gtbr.utils.CEPUtils;
+import io.materialtheme.darkstackoverflow.DarkStackOverflowTheme;
+import mdlaf.MaterialLookAndFeel;
+import mdlaf.themes.MaterialLiteTheme;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,6 +50,15 @@ import java.awt.*;
  * @author marco.mangan@pucrs.br
  */
 public class ViaCepApp {
+    static {
+        try {
+             UIManager.setLookAndFeel(new MaterialLookAndFeel(new MaterialLiteTheme()));
+// by including the https://github.com/material-ui-swing/DarkStackOverflowTheme
+            // UIManager.setLookAndFeel(new MaterialLookAndFeel(new DarkStackOverflowTheme()));
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+    }
 
     private static JTextField addTextField(final JPanel p, final String label) {
         final JLabel l = new JLabel(label, JLabel.TRAILING);
