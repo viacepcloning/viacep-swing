@@ -12,7 +12,6 @@ A simple Via Cep client using Java Swing
 ![image](https://github.com/viacepcloning/viacep-swing/assets/595430/1e8c6076-ce05-4f09-889b-54b56e0c399a)
 
 
-![image](https://github.com/viacepcloning/viacep-swing/assets/595430/893fc815-b854-49b4-b2a3-0ad2c8e93541)
 
 
 https://github.com/ThallesT/via-cep/blob/master/src/main/java/com/gtbr/utils/CEPUtils.java
