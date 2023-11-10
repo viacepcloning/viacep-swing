@@ -13,3 +13,7 @@ A simple Via Cep client using Java Swing
 
 
 ![image](https://github.com/viacepcloning/viacep-swing/assets/595430/893fc815-b854-49b4-b2a3-0ad2c8e93541)
+
+
+https://github.com/ThallesT/via-cep/blob/master/src/main/java/com/gtbr/utils/CEPUtils.java
+https://docs.oracle.com/javase/tutorial/uiswing/examples/layout/SpringGridProject/src/layout/SpringUtilities.java
