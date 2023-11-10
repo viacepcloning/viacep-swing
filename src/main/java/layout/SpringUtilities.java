@@ -1,6 +1,6 @@
 
 /*
- * Copyright (c) 2023, PUCRS and/or its affiliates. All rights reserved.
+ * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -30,7 +30,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package pucrs.poo;
+package layout;
 
 import javax.swing.*;
 import javax.swing.SpringLayout;

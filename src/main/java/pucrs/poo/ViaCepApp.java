@@ -40,6 +40,7 @@ import com.gtbr.ViaCepClient;
 import com.gtbr.domain.Cep;
 import com.gtbr.utils.CEPUtils;
 import io.materialtheme.darkstackoverflow.DarkStackOverflowTheme;
+import layout.SpringUtilities;
 import mdlaf.MaterialLookAndFeel;
 import mdlaf.themes.MaterialLiteTheme;
 
@@ -52,9 +53,9 @@ import java.awt.*;
 public class ViaCepApp {
     static {
         try {
-             UIManager.setLookAndFeel(new MaterialLookAndFeel(new MaterialLiteTheme()));
+             //UIManager.setLookAndFeel(new MaterialLookAndFeel(new MaterialLiteTheme()));
 // by including the https://github.com/material-ui-swing/DarkStackOverflowTheme
-            // UIManager.setLookAndFeel(new MaterialLookAndFeel(new DarkStackOverflowTheme()));
+             UIManager.setLookAndFeel(new MaterialLookAndFeel(new DarkStackOverflowTheme()));
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
