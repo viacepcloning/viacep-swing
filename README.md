@@ -6,6 +6,8 @@ A simple Via Cep client using Java Swing
 
 <img width="449" alt="image" src="https://github.com/viacepcloning/viacep-swing/assets/595430/6ddf6c84-c4e1-4bd6-9c9f-edf4ad3f421c">
 
+<img width="358" alt="image" src="https://github.com/viacepcloning/viacep-swing/assets/595430/0a89ac3b-0a03-4f46-9830-a9576ccab452">
+
 
 ![image](https://github.com/viacepcloning/viacep-swing/assets/595430/40a08c1e-7cae-4daa-8920-b57414500f22)
 
