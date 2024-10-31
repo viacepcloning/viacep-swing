@@ -53,9 +53,9 @@ import java.awt.*;
 public class ViaCepApp {
     static {
         try {
-             //UIManager.setLookAndFeel(new MaterialLookAndFeel(new MaterialLiteTheme()));
-// by including the https://github.com/material-ui-swing/DarkStackOverflowTheme
-             UIManager.setLookAndFeel(new MaterialLookAndFeel(new DarkStackOverflowTheme()));
+            // UIManager.setLookAndFeel(new MaterialLookAndFeel(new MaterialLiteTheme()));
+            // by including the https://github.com/material-ui-swing/DarkStackOverflowTheme
+            UIManager.setLookAndFeel(new MaterialLookAndFeel(new DarkStackOverflowTheme()));
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
@@ -73,7 +73,6 @@ public class ViaCepApp {
 
     private static void createAndShowGUI() {
 
-
         final JPanel p = new JPanel(new SpringLayout());
 
         final JTextField cepField = addTextField(p, "CEP");
@@ -86,24 +85,22 @@ public class ViaCepApp {
         cepField.setEditable(true);
 
         SpringUtilities.makeCompactGrid(p,
-                6, 2, //rows, cols
-                6, 6,        //initX, initY
-                6, 6);       //xPad, yPad
+                6, 2, // rows, cols
+                6, 6, // initX, initY
+                6, 6); // xPad, yPad
 
         final JFrame frame = new JFrame("Via CEP");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        p.setOpaque(true);  //content panes must be opaque
+        p.setOpaque(true); // content panes must be opaque
         frame.setContentPane(p);
 
         frame.pack();
         frame.setVisible(true);
 
-        cepField.addActionListener(e ->
-        {
+        cepField.addActionListener(e -> {
             cepField.setEditable(false);
-            javax.swing.SwingUtilities.invokeLater(() ->
-            {
+            javax.swing.SwingUtilities.invokeLater(() -> {
                 try {
                     String endereco = CEPUtils.removeMascaraCep(cepField.getText());
                     Cep cep = ViaCepClient.findCep(endereco);
