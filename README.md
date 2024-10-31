@@ -31,7 +31,7 @@ Material UI
 git clone https://github.com/viacepcloning/viacep-swing.git
 cd viacep-swing
 mvn clean package
-java -jar target viacep.jar
+java -jar target/viacep-cloning-1.0-SNAPSHOT.jar
 ```
 
 # Running on Github Codespaces
