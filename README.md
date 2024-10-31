@@ -44,7 +44,8 @@ This setup will install a Linux library to allow the application interface and a
 ### Installing libXtst6
 
 ```
-
+sudo apt-get update
+sudo apt-get install libxtst6
 ```
 
 
