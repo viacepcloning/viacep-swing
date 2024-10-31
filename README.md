@@ -93,5 +93,10 @@ docker compose up -d
 ```
 
 # References
+
 https://notes.dt.in.th/CodespacesDisplayServer
+
+Stackoverflow. Can't find/install libXtst.so.6?
+https://stackoverflow.com/questions/17355863/cant-find-install-libxtst-so-6
+
 
