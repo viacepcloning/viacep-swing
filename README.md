@@ -28,8 +28,8 @@ Material UI
 # Running on a local computer
 
 ```
-git clone
-cd
+git clone https://github.com/viacepcloning/viacep-swing.git
+cd viacep-swing
 mvn clean package
 java -jar target viacep.jar
 ```
